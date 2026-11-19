@@ -1,0 +1,434 @@
+main {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+
+header h1 {
+  margin: 0 0 6px;
+  font-size: 1.8rem;
+}
+
+header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.stage {
+  position: relative;
+  height: min(70vh, 620px);
+  margin-top: 12px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: #03040a;
+  color: #eee;
+  --muted: #b8bcc8;
+  cursor: grab;
+}
+
+.readout {
+  padding-left: 16px;
+}
+
+.legend {
+  margin-right: 16px;
+}
+
+.tooltip {
+  position: fixed;
+  z-index: 10;
+  pointer-events: none;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: rgba(20, 22, 30, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #eee;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  white-space: nowrap;
+}
+
+.tooltip .tt-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tooltip .swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.tooltip .tt-sub {
+  color: #b8bcc8;
+}
+
+.scenario-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.row-label {
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.segmented {
+  display: inline-flex;
+  flex-wrap: wrap;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.segmented button {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border: none;
+  border-right: 1px solid var(--border);
+  background: var(--panel);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.segmented button:last-child {
+  border-right: none;
+}
+
+.segmented button.active {
+  background: var(--text);
+  color: var(--bg);
+  font-weight: 600;
+}
+
+.segmented .swatch {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--swatch);
+}
+
+.readout .scenario-name {
+  font-weight: 600;
+  filter: brightness(1.4);
+}
+
+.timeline .series.scenario {
+  stroke-width: 1.4;
+  opacity: 0.45;
+}
+
+.timeline .series.scenario.active {
+  stroke-width: 2.6;
+  opacity: 1;
+}
+
+.timeline .end-label {
+  font-size: 11px;
+  cursor: pointer;
+  opacity: 0.65;
+}
+
+.timeline .end-label.active {
+  font-weight: 700;
+  opacity: 1;
+}
+
+.places {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.places .row-label {
+  min-width: 62px;
+}
+
+.places button {
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--panel);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+
+.places button.active {
+  border-color: #c9a400;
+  background: #ffd23f;
+  color: #1a1a1a;
+}
+
+.place-card {
+  position: absolute;
+  left: 16px;
+  bottom: 12px;
+  width: min(280px, calc(100% - 32px));
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(20, 22, 30, 0.88);
+  border: 1px solid #ffd23f;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  cursor: default;
+}
+
+.place-card .pc-name {
+  font-weight: 700;
+  color: #ffd23f;
+  margin-bottom: 2px;
+}
+
+.place-card .tt-value {
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.place-card .swatch {
+  width: 12px;
+  height: 12px;
+  border-radius: 2px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.place-card .tt-sub {
+  color: #b8bcc8;
+  font-weight: 400;
+  font-size: 0.85rem;
+}
+
+.place-card p {
+  margin: 6px 0 0;
+  color: #dde;
+}
+
+.place-card .close {
+  position: absolute;
+  top: 4px;
+  right: 6px;
+  border: none;
+  background: none;
+  color: #b8bcc8;
+  font-size: 1.2rem;
+  cursor: pointer;
+}
+
+.options {
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.options .relief {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.options .relief input {
+  width: 110px;
+}
+
+.options label {
+  color: var(--muted);
+  font-size: 0.9rem;
+  white-space: nowrap;
+}
+
+.timeline .year-dots circle {
+  fill: var(--muted);
+  opacity: 0.5;
+}
+
+.timeline .threshold {
+  stroke: #c0392b;
+  stroke-dasharray: 5 4;
+  opacity: 0.7;
+}
+
+.options select {
+  font: inherit;
+  color: var(--text);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 4px 6px;
+}
+
+.stage:active {
+  cursor: grabbing;
+}
+
+.readout {
+  position: absolute;
+  top: 8px;
+  left: 0;
+  pointer-events: none;
+}
+
+.readout .year {
+  font-size: 2.6rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.readout .gm {
+  color: var(--muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.legend {
+  position: absolute;
+  right: 0;
+  bottom: 8px;
+  width: 220px;
+  font-size: 0.8rem;
+  color: var(--muted);
+  pointer-events: none;
+}
+
+.legend .bar {
+  height: 10px;
+  border-radius: 2px;
+}
+
+.legend .ticks {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2px;
+}
+
+.legend .caption {
+  text-align: center;
+  margin-top: 2px;
+}
+
+.controls {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.controls button {
+  min-width: 90px;
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--panel);
+  color: var(--text);
+  font: inherit;
+  cursor: pointer;
+}
+
+.controls input {
+  flex: 1;
+}
+
+.timeline {
+  width: 100%;
+  height: auto;
+  margin-top: 8px;
+  cursor: ew-resize;
+  touch-action: none;
+  user-select: none;
+}
+
+.timeline text {
+  fill: var(--muted);
+  font-size: 11px;
+}
+
+.timeline .grid {
+  stroke: var(--border);
+}
+
+.timeline .divider {
+  stroke: var(--muted);
+  stroke-dasharray: 3 3;
+}
+
+.timeline .series {
+  fill: none;
+  stroke: var(--text);
+  stroke-width: 1.6;
+}
+
+.timeline .cursor {
+  stroke: #c0392b;
+  stroke-width: 1.5;
+}
+
+.timeline .dot {
+  fill: #c0392b;
+}
+
+.writeup {
+  max-width: 68ch;
+  margin: 56px auto 0;
+  padding-top: 28px;
+  border-top: 1px solid var(--border);
+  line-height: 1.6;
+}
+
+.writeup h2 {
+  font-size: 1.5rem;
+  margin: 0 0 8px;
+}
+
+.writeup h3 {
+  font-size: 1.1rem;
+  margin: 28px 0 6px;
+}
+
+.writeup p,
+.writeup li {
+  margin: 0 0 10px;
+}
+
+.writeup ul {
+  padding-left: 20px;
+  margin: 0;
+}
+
+.writeup code {
+  font-size: 0.9em;
+  padding: 1px 4px;
+  border-radius: 4px;
+  background: var(--border);
+}
+
+.writeup a {
+  color: inherit;
+}
+
+
+footer {
+  margin-top: 16px;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+
+.loading {
+  text-align: center;
+  margin-top: 30vh;
+  color: var(--muted);
+}
