@@ -1,5 +1,4 @@
-// The write-up at the bottom of the page. Numbers quoted here come from the
-// CESM2-WACCM data, using 4.5° x 6° boxes and 20-year averages.
+// The write-up at the bottom of the page.
 
 export default function Writeup() {
   return (
@@ -9,11 +8,13 @@ export default function Writeup() {
       <section>
         <h3>The question</h3>
         <p>
-          Climate goals are usually about the whole planet, like keeping
-          global warming under 2 °C. But nobody lives in "the global average."
-          Some places warm much faster than others. We wanted to show{" "}
-          <strong>when different cities reach 2 °C of warming</strong>, and how
-          much that depends on how much we pollute in the future.
+          Climate change doesn't affect just one part of the world. It affects
+          the whole planet, which is why it's called "global" warming.
+          However, just because it affects the whole world doesn't mean every
+          place is affected equally. Some places are warming up much faster
+          than others. We wanted to see how much each city across the world
+          heats up, and, depending on which future we end up in, how fast and
+          how high those temperatures can get.
         </p>
       </section>
 
@@ -21,11 +22,11 @@ export default function Writeup() {
         <h3>The data</h3>
         <p>
           Our data comes from a climate model called CESM2-WACCM, made by the
-          National Center for Atmospheric Research. It's part of CMIP6, a
-          large set of climate simulations that scientists around the world
-          share. We used its monthly air temperature near the ground. The
-          model simulates the past from 1850 to 2014, then three possible
-          futures out to 2100:
+          National Center for Atmospheric Research. The first part of the data
+          (1850 to 2014) is the model recreating the past, using real-world
+          records like greenhouse gas levels and volcanic eruptions. The rest
+          is simulated: the model plays out three possible futures that
+          stretch out to 2100.
         </p>
         <ul>
           <li><strong>SSP1-2.6:</strong> the world cuts emissions quickly.</li>
@@ -35,8 +36,8 @@ export default function Writeup() {
         <p>
           We used Python to turn the monthly numbers into yearly averages.
           Then, for every spot on the map, we subtracted that spot's own
-          average from 1850 to 1900. So every color means "this much warmer
-          (or cooler) than this place used to be."
+          average from 1850 to 1900. That way, every color means "this much
+          warmer (or cooler) than this place used to be."
         </p>
       </section>
 
@@ -44,41 +45,36 @@ export default function Writeup() {
         <h3>Design choices</h3>
         <ul>
           <li>
-            <strong>Why a globe?</strong> Flat maps stretch some parts of the
-            world, especially near the poles, which is where warming is
-            strongest. A globe shows every place at its real size, and you can
-            spin it to find your part of the world. Since you can only see one
-            side of a globe at a time, we added the line chart underneath to
-            show the full timeline.
+            <strong>Why a globe?</strong> Part of the reason we chose a globe
+            instead of a 2D map was to be innovative. Other students in our
+            class have used this data, so we wanted to show it in a more unique
+            way. Also, the biggest changes happen around the poles, and a flat
+            map that gets cut off at the edges makes it harder to compare those
+            changes with the rest of the world. Since you can spin the globe to
+            either side, it's easier to see everything in relation to
+            everything else.
           </li>
           <li>
-            <strong>Why red and blue?</strong> Red means warmer, blue means
-            cooler, and white means no change. We avoided rainbow colors
-            because they're hard to read in order and don't work well for
-            people who are colorblind.
+            <strong>Why red and blue?</strong> We picked red and blue because
+            they're intuitive: red signals hotter, blue signals cooler, and
+            white means there's no change. We kept it to just two colors so
+            the map still works for people who are colorblind.
           </li>
           <li>
-            <strong>Why boxes?</strong> The model can't see details smaller
-            than its grid, so we show the data as boxes instead of blending it
-            into a smooth picture. The boxes also make it easy to hover and
-            read the exact number.
+            <strong>Why boxes?</strong> We chose a grid of boxes to show the
+            data more clearly instead of blending it into a smooth picture.
+            Boxes also make it easier to hover over specific areas and cities
+            and get exact numbers.
           </li>
           <li>
-            <strong>Why a 20-year average?</strong> Any one year can be
-            unusually hot or cold just by chance. Averaging over 20 years shows
-            the real trend. We say a place "reaches 2 °C" in the first year its
-            20-year average hits 2 °C. You can turn the averaging off to see
-            the yearly ups and downs.
+            <strong>Why a 20-year average?</strong> We used a 20-year average
+            to decide when a place reaches 2 °C, because any single year can be
+            unusually hot or cold just by chance.
           </li>
           <li>
-            <strong>Why shades of one color for the scenarios?</strong> The
-            three futures go from less to more pollution, so we used one red
+            <strong>Why shades of one color for the futures?</strong> The three
+            futures go from less pollution to more, so we used a single red
             that gets darker as emissions go up.
-          </li>
-          <li>
-            <strong>Terrain, ocean shine and stars</strong> are just there to
-            make the globe easier to recognize. They aren't data. You can turn
-            the terrain and shine down to zero if they get in the way.
           </li>
         </ul>
       </section>
@@ -87,27 +83,21 @@ export default function Writeup() {
         <h3>What we found</h3>
         <ul>
           <li>
-            <strong>The world as a whole reaches 2 °C around 2035 to
-            2040</strong> in all three futures. The big difference comes
-            later: by the end of the century, the world is about 2.4 °C warmer
-            if we cut emissions fast, but almost 6 °C warmer if we don't.
+            The world as a whole reaches 2 °C by around 2040 in all three
+            futures, so in this model, changes made in the near future can't
+            stop that from happening. The big difference comes by the end of
+            the century: the world ends up about 2.4 °C warmer in the best-case
+            future, but nearly 6 °C warmer in the worst.
           </li>
           <li>
-            <strong>Most places get there before the world average
-            does.</strong> Land warms faster than ocean, and the far north
-            warms fastest of all. The Arctic was already past 2 °C in the
-            1990s.
+            The poles and land seem to warm up much faster than the ocean. The
+            Arctic was already past 2 °C in the 1990s.
           </li>
           <li>
-            <strong>Cities can be decades apart.</strong> New York reached 2 °C
-            around 2020 in this model. London is the opposite: it stays under
-            2 °C through 2100 unless emissions are very high.
-          </li>
-          <li>
-            <strong>Cutting emissions matters most for how far past 2 °C we
-            go.</strong> For example, Mumbai ends the century about 2 °C warmer
-            in the low-emissions future, but almost 6 °C warmer in the
-            high-emissions one.
+            Different cities have very different futures depending on the
+            timeline. For example, if we cut emissions, Mumbai ends up only
+            about 2 °C warmer, but in the high-emissions future it's almost
+            6 °C warmer.
           </li>
         </ul>
       </section>
@@ -116,37 +106,18 @@ export default function Writeup() {
         <h3>Limitations</h3>
         <ul>
           <li>
-            This is one climate model and one run, so it shows one possible
-            future, not a prediction. This model also tends to warm a bit more
-            than most others.
+            This is only one climate model and one run, so it shows one
+            possible future, not a prediction. This model also tends to warm a
+            bit more than most other models.
           </li>
           <li>
-            Each box covers hundreds of miles. "New York" really means the box
-            that New York is in, which also includes part of the ocean.
+            Each box covers hundreds of miles, so "New York" really means the
+            box New York sits in, which also includes part of the ocean.
           </li>
           <li>
-            In the early 2000s the three futures look almost the same, and the
-            low-emissions one even warms slightly faster at first. That's
-            mostly random variation in this single run.
-          </li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>Credits</h3>
-        <ul>
-          <li>
-            Climate data: CMIP6 CESM2-WACCM (NCAR), from Google Cloud Public
-            Datasets.
-          </li>
-          <li>
-            Coastlines: Natural Earth. Terrain: a NASA-based elevation map
-            from the three-globe project.
-          </li>
-          <li>Built with React, three.js and d3.</li>
-          <li>
-            We used an AI coding assistant (Claude) to help write the code and
-            this write-up.
+            In the early 2000s, the three futures look almost the same, and the
+            low-emissions one even warms slightly faster at first. That's mostly
+            just random variation in this single run.
           </li>
         </ul>
       </section>
